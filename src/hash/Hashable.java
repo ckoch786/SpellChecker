@@ -2,6 +2,8 @@ package hash;
 /**
  * Objects of classes that implement this interface can be used
  * with lists based on hashing
+ * @author Cory Koch
+ * @author Carl  Bohman
  */
 public interface Hashable {
 	/**
