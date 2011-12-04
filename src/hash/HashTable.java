@@ -28,7 +28,6 @@ public class HashTable {
 		//else
 			
 	} 
-	
 	/**
 	 * 
 	 * @param S inserts S into the hash table.
