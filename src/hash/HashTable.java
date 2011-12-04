@@ -21,7 +21,6 @@ public class HashTable {
 	HashTable (int n){
 		
 	} 
-	
 	/**
 	 * 
 	 * @param S inserts S into the hash table.
