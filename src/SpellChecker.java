@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 
+import hash.HashTable;
 import hash.Hashable;
 
 /**
@@ -15,6 +16,8 @@ import hash.Hashable;
  */
 public class SpellChecker implements Hashable{
 	
+	
+	HashTable hashTable = new HashTable();
 	/**
 	 * 
 	 * @param dictName
@@ -26,9 +29,22 @@ public class SpellChecker implements Hashable{
 	}
 	
 	/**
-	 * 
+	 * <p>
+	 * Let N be the number of words in the dictionary.  
+	 * Choose an array size that will have a load factor 
+	 * just over 1/2.  That is, make the size of the array larger 
+	 * than 2*N.  Choose a modulus that is prime, i.e. choose an 
+	 * actual array size that is a prime number just over 2*N, and 
+	 * have your program automatically choose this prime number.
+	 * </p>
 	 */
+	
 	public int hash(){
+		hashTable.setHashValue(size * 2);
+		if(hashTable.isPrime(hashTable.getHashValue() == true)
+		//TODO
+		//HashValue mod array size *2 Check if prime
+		//if not generate prime 
 		return 0;
 	}
 	
@@ -36,6 +52,8 @@ public class SpellChecker implements Hashable{
 	//For reading a document into an array of single words, consider:
 	public static String[] getWordsFromFile(String docName){
 		return getWords( readFile(docName) );
+		//TODO set size where size is of the array of 
+		//words
 	}
 
 	public static String[] getWords(String str){
@@ -63,7 +81,7 @@ public class SpellChecker implements Hashable{
 	//reads a dictionary into a hash table:
 		File F = new File("Dictionary.txt");	
 		Scanner dictFile = new Scanner(F);		
-		String line;
+		String line;''
 		while (dictFile.hasNextLine()) {
 		   line = dictFile.nextLine();
 		   // insert the words in line into the hash table 

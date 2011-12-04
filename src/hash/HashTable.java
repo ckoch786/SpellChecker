@@ -8,25 +8,32 @@ package hash;
  *
  */
 public class HashTable {
+	protected int key;
+	protected int[] hashTable;
+	protected int size;
+	private int hashValue;
 	/**
 	 * Constructor for a hash table of default size: 101
 	 */
-	HashTable (){
-		
+	public HashTable(){
+		hashTable = new int[101];
 	} 
 	/**
 	 * 
 	 * @param n Constructor for a hash table of size n.
 	 */
-	HashTable (int n){
-		
+	public HashTable (int n){
+		if(isPrime(n) == true)
+		   hashTable = new int[size];
+		//else
+			
 	} 
 	
 	/**
 	 * 
 	 * @param S inserts S into the hash table.
 	 */
-	void Insert (String S){
+	public void Insert (String S){
 		
 	} 
 	/**
@@ -34,14 +41,14 @@ public class HashTable {
 	 * @param S
 	 * @return return true if S is in the table, false otherwise
  	 */
-	boolean Contains (String S){
+	public boolean Contains (String S){
 		return false;
 	}
 	/**
 	 * 
 	 * @return - returns the number of strings stored in the table
 	 */
-	int NumEntries ( ){
+	public int NumEntries ( ){
 		return 0;
 	} 
 	
@@ -50,15 +57,22 @@ public class HashTable {
 	 * @param n
 	 * @return
 	 */
-	boolean isPrime(int n) {
+	public boolean isPrime(int n) {
     
        if (n%2==0) 	//check if n is a multiple of 2
           return false;
        else
-          for(int i=3;i*i<=n;i+=2) {
-             if(n%i==0)
+          for(int i=3; i*i <= n; i+=2) {
+             if(n%i == 0)
                 return false;
        }
        return true;
 }
+	
+	public void setHashValue(int i) {
+		this.hashValue = i;
+	}
+	public int getHashValue(){
+		return hashValue;
+	}
 }
