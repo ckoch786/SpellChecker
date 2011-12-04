@@ -26,7 +26,8 @@ public class HashTable {
 	 * 
 	 * @param S inserts S into the hash table.
 	 */
-	void Insert (String S){
+	public static void Insert (String S){
+		//Hash the String S
 		
 	} 
 	/**
@@ -35,6 +36,11 @@ public class HashTable {
 	 * @return return true if S is in the table, false otherwise
  	 */
 	boolean Contains (String S){
+		
+		
+		
+		
+		
 		return false;
 	}
 	/**
