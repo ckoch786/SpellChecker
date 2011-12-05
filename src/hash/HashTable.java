@@ -32,12 +32,8 @@ public class HashTable {
 	 * 
 	 * @param S inserts S into the hash table.
 	 */
-<<<<<<< HEAD
-	public void Insert (String S){
-=======
 	public static void Insert (String S){
 		//Hash the String S
->>>>>>> 5775a564a670bda66fa3a9a85e2c7b7dd81dfd4f
 		
 	} 
 	/**
@@ -45,16 +41,7 @@ public class HashTable {
 	 * @param S
 	 * @return return true if S is in the table, false otherwise
  	 */
-<<<<<<< HEAD
 	public boolean Contains (String S){
-=======
-	boolean Contains (String S){
-		
-		
-		
-		
-		
->>>>>>> 5775a564a670bda66fa3a9a85e2c7b7dd81dfd4f
 		return false;
 	}
 	/**

@@ -57,15 +57,15 @@ public class SpellChecker implements Hashable{
 		//TODO set size where size is of the array of 
 		//words
 	}
-/**
- * <p>
- * Breaks the string into an array of words
- * determined by blank spaces and returns
- * the array.  
- * <p>
- * @param str
- * @return words
- */
+	/**
+ 	* <p>
+ 	* Breaks the string into an array of words
+ 	* determined by blank spaces and returns
+ 	* the array.  
+ 	* <p>
+ 	* @param str
+ 	* @return words
+ 	*/
 	public static String[] getWords(String str){
 		StringTokenizer st = new StringTokenizer(str);
 		String[] words;
@@ -98,14 +98,9 @@ public class SpellChecker implements Hashable{
 	//reads a dictionary into a hash table:
 	public static void dictread() throws FileNotFoundException{
 		File F = new File("Dictionary.txt");	
-<<<<<<< HEAD
-		Scanner dictFile = new Scanner(F);		
-		String line;''
-=======
 		Scanner dictFile = new Scanner(F);
 		String line;
 		
->>>>>>> 5775a564a670bda66fa3a9a85e2c7b7dd81dfd4f
 		while (dictFile.hasNextLine()) {
 		   line = dictFile.nextLine();
 		   
