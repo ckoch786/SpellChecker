@@ -1,4 +1,5 @@
 package hash;
+
 /**
  * <p>
  * Implement a hash table to store strings (i.e. objects of the Java String class).
@@ -9,14 +10,14 @@ package hash;
  */
 public class HashTable {
 	protected int key;
-	protected int[] hashTable;
+	protected static int[][] hashTable;
 	protected int size;
-	private int hashValue;
+	private static int hashValue;
 	/**
 	 * Constructor for a hash table of default size: 101
 	 */
 	public HashTable(){
-		hashTable = new int[101];
+		hashTable = new int[101][];
 	} 
 	/**
 	 * 
@@ -24,24 +25,52 @@ public class HashTable {
 	 */
 	public HashTable (int n){
 		if(isPrime(n) == true)
-		   hashTable = new int[size];
+		   hashTable = new int[size][];
 		//else
 			
 	} 
 	/**
+	 * inserts S into the hash table.
+	 * @param S 
 	 * 
-	 * @param S inserts S into the hash table.
 	 */
 	public static void Insert (String S){
-		//Hash the String S
+		int location, hashVal;
+		
+		
+		
+		
+		if(Contains(S)){
+			hashVal=getHashValue(S);
+			location=hashVal.hash();
+			for(int i=0; i<10; i++){
+				if(hashTable[location][i]==0){
+					hashTable[location][i]=hashVal;
+					break;
+				}else 
+					System.out.println("Too many collisions");
+			}
+		}
+		//TODO Fix how to correctly get the location from
+		//	   Insert and Contains
 		
 	} 
 	/**
 	 * 
 	 * @param S
-	 * @return return true if S is in the table, false otherwise
+	 * @return true if S is in the table, false otherwise
  	 */
-	public boolean Contains (String S){
+	public static boolean Contains (String S){
+		int location, hashVal;
+		
+		hashVal=getHashValue(S);
+		location=hashVal.hash();
+		for(int i=0; i<10; i++){
+			if(hashTable[location][i]==(hashVal)){
+				return true;
+			}
+		}
+		
 		return false;
 	}
 	/**
@@ -72,7 +101,7 @@ public class HashTable {
 	public void setHashValue(int i) {
 		this.hashValue = i;
 	}
-	public int getHashValue(){
+	public static int getHashValue(String S){
 		return hashValue;
 	}
 }
