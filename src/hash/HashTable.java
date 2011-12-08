@@ -9,26 +9,20 @@ package hash;
  *
  */
 public class HashTable {
-	protected int key;
-	protected static int[][] hashTable;
-	protected int size;
-	private static int hashValue;
-	/**
-	 * Constructor for a hash table of default size: 101
-	 */
-	public HashTable(){
-		hashTable = new int[101][];
-	} 
+	
+	private final static int TABLE_SIZE = 128;
+    HashEntry[] table;
+    
 	/**
 	 * 
-	 * @param n Constructor for a hash table of size n.
+	 * Constructor for a hash table of size TABLE _SIZE.
 	 */
-	public HashTable (int n){
-		if(isPrime(n) == true)
-		   hashTable = new int[size][];
-		//else
-			
-	} 
+   public HashTable() {
+      table = new HashEntry[TABLE_SIZE];
+	  for ( int i = 0; i < TABLE_SIZE; i++) {
+	     table[i] = null;
+	  }
+}
 	/**
 	 * inserts S into the hash table.
 	 * @param S 
