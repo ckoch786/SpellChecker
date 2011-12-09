@@ -11,6 +11,7 @@ package hash;
 public class HashTable {
     // size of dict = 2744	 dict * 2 = 5488
 	private final static int TABLE_SIZE = 5488;
+	protected int numEntries;
     HashEntry[] table;
     
 	/**
@@ -39,6 +40,9 @@ public class HashTable {
 	    while ( table[hash] != null && table[hash].getKey() != key)
 		   hash = (hash + 1) % TABLE_SIZE;
 	       table[hash] = new HashEntry(key, S);
+	       System.out.println("The key: " + key + " for: " + S);
+	       System.out.println("Value "+S+ " is being place into the hash table at "+ hash);
+	       numEntries++;
 	}
 		
 
@@ -64,9 +68,7 @@ public class HashTable {
 	 * 
 	 * @return - returns the number of strings stored in the table
 	 */
-	public int NumEntries ( ){
-		return 0;
-	} 
+	public int NumEntries() { return numEntries; } 
 	
 	
 	//TODO remove
