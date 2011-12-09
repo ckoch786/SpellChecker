@@ -28,11 +28,17 @@ public class HashTable {
 	 * @param S 
 	 * 
 	 */
-	public void Insert (int key, int value){
-		 int hash = (key % TABLE_SIZE);
-	      while ( table[hash] != null && table[hash].getKey() != key)
-		      hash = (hash + 1) % TABLE_SIZE;
-	          table[hash] = new HashEntry(key, value);
+	public void Insert (String S){
+		int i, key; 
+		
+		for(key = 0 , i = 0; i < S.length(); i++ ) {
+			key += (int)S.charAt(i);
+			System.out.println("The key for "+S + " is " +key);
+		}
+		int hash = (key % TABLE_SIZE);		 
+	    while ( table[hash] != null && table[hash].getKey() != key)
+		   hash = (hash + 1) % TABLE_SIZE;
+	       table[hash] = new HashEntry(key, S);
 	}
 		
 
@@ -41,14 +47,19 @@ public class HashTable {
 	 * @param S
 	 * @return true if S is in the table, false otherwise
  	 */
-	public boolean Contains (int key){
-		int hash = (key % TABLE_SIZE);
-		   while (table[hash] != null && table[hash].getKey() != key)
-			      hash = (hash + 1) % TABLE_SIZE;
-		      if ( table[hash] == null) return false;
-		      else if(table[hash].equals(key))  return true;
-		      else                              return false;
-	   }
+	public boolean Contains (String S){
+        int i, key; 
+		
+		for(key = 0 , i = 0; i < S.length(); i++ ) {
+			key += (int)S.charAt(i);
+		}
+		int hash = (key % TABLE_SIZE);	
+		while (table[hash] != null && table[hash].getKey() != key)
+	        hash = (hash + 1) % TABLE_SIZE;
+		if ( table[hash] == null) return false;
+		else if(table[hash].equals(S))    return true;
+		else                              return false;
+   }
 	/**
 	 * 
 	 * @return - returns the number of strings stored in the table
@@ -59,11 +70,16 @@ public class HashTable {
 	
 	
 	//TODO remove
-	   public int get(int key) {
-	      int hash = (key % TABLE_SIZE);
+	   public String get(String S) {
+		  int i, key; 
+		  for(key = 0 , i = 0; i < S.length(); i++ ) {
+              key += (int)S.charAt(i);
+		  }
+		  int hash = (key % TABLE_SIZE);		 
+		   
 	      while ( table[hash] != null && table[hash].getKey() != key)
 		      hash = (hash + 1) % TABLE_SIZE;
-	      if ( table[hash] == null) return -1;
+	      if ( table[hash] == null) return null;
 	      else return table[hash].getValue();
 	   }
 	

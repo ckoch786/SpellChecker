@@ -2,12 +2,12 @@ package hash;
 
 public class HashEntry {
    private int key;
-   private int value;
+   private String value;
 
-   HashEntry(int key, int value) {
+   HashEntry(int key, String value) {
       this.key   = key;
       this.value = value;
   }
-   public int getKey()   { return key; }
-   public int getValue() { return value; }
+   public int getKey()      { return key; } //ASCII sum of each character of the value
+   public String getValue() { return value; }
 }
