@@ -9,8 +9,8 @@ package hash;
  *
  */
 public class HashTable {
-	
-	private final static int TABLE_SIZE = 128;
+    // size of dict = 2744	 dict * 2 = 5488
+	private final static int TABLE_SIZE = 5488;
     HashEntry[] table;
     
 	/**
@@ -28,45 +28,27 @@ public class HashTable {
 	 * @param S 
 	 * 
 	 */
-	public static void Insert (String S){
-		int location, hashVal;
+	public void Insert (int key, int value){
+		 int hash = (key % TABLE_SIZE);
+	      while ( table[hash] != null && table[hash].getKey() != key)
+		      hash = (hash + 1) % TABLE_SIZE;
+	          table[hash] = new HashEntry(key, value);
+	}
 		
-		
-		
-		
-		if(Contains(S)){
-			hashVal=getHashValue(S);
-			location=hashVal.hash();
-			for(int i=0; i<10; i++){
-				if(hashTable[location][i]==0){
-					hashTable[location][i]=hashVal;
-					break;
-				}else 
-					System.out.println("Too many collisions");
-			}
-		}
-		//TODO Fix how to correctly get the location from
-		//	   Insert and Contains
-		
-	} 
+
 	/**
 	 * 
 	 * @param S
 	 * @return true if S is in the table, false otherwise
  	 */
-	public static boolean Contains (String S){
-		int location, hashVal;
-		
-		hashVal=getHashValue(S);
-		location=hashVal.hash();
-		for(int i=0; i<10; i++){
-			if(hashTable[location][i]==(hashVal)){
-				return true;
-			}
-		}
-		
-		return false;
-	}
+	public boolean Contains (int key){
+		int hash = (key % TABLE_SIZE);
+		   while (table[hash] != null && table[hash].getKey() != key)
+			      hash = (hash + 1) % TABLE_SIZE;
+		      if ( table[hash] == null) return false;
+		      else if(table[hash].equals(key))  return true;
+		      else                              return false;
+	   }
 	/**
 	 * 
 	 * @return - returns the number of strings stored in the table
@@ -74,6 +56,16 @@ public class HashTable {
 	public int NumEntries ( ){
 		return 0;
 	} 
+	
+	
+	//TODO remove
+	   public int get(int key) {
+	      int hash = (key % TABLE_SIZE);
+	      while ( table[hash] != null && table[hash].getKey() != key)
+		      hash = (hash + 1) % TABLE_SIZE;
+	      if ( table[hash] == null) return -1;
+	      else return table[hash].getValue();
+	   }
 	
 	/**
 	 * For testing if an integer is prime:
@@ -92,10 +84,5 @@ public class HashTable {
        return true;
 }
 	
-	public void setHashValue(int i) {
-		this.hashValue = i;
-	}
-	public static int getHashValue(String S){
-		return hashValue;
-	}
+	
 }

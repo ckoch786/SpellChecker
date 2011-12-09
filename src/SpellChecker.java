@@ -16,10 +16,10 @@ import hash.Hashable;
  * @author Carl Bohman
  *
  */
-public class SpellChecker implements Hashable{
+public class SpellChecker {
 	
-	
-	HashTable hashTable = new HashTable();
+	//ht shorter is simpler since we will be using it several times through out the program
+	HashTable ht = new HashTable();
 	/**
 	 * 
 	 * @param dictName
@@ -41,14 +41,6 @@ public class SpellChecker implements Hashable{
 	 * </p>
 	 */
 	
-	public int hash(){
-		hashTable.setHashValue(size * 2);
-		if(hashTable.isPrime(hashTable.getHashValue() == true)
-		//TODO
-		//HashValue mod array size *2 Check if prime
-		//if not generate prime 
-		return 0;
-	}
 	
 	//TODO
 	//For reading a document into an array of single words, consider:
@@ -96,7 +88,7 @@ public class SpellChecker implements Hashable{
 	
 	//TODO
 	//reads a dictionary into a hash table:
-	public static void dictread() throws FileNotFoundException{
+	public  void dictread() throws FileNotFoundException{
 		File F = new File("Dictionary.txt");	
 		Scanner dictFile = new Scanner(F);
 		String line;
@@ -104,7 +96,7 @@ public class SpellChecker implements Hashable{
 		while (dictFile.hasNextLine()) {
 		   line = dictFile.nextLine();
 		   
-		   HashTable.Insert(line);
+		  ht.Insert(line);
 		   // insert the words in line into the hash table 
 		}
 	}
