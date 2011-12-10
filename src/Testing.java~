@@ -20,7 +20,7 @@ public class Testing {
 		for (int k = 0; k < ht.NumEntries(); k++){
 			System.out.println("at " + "  " +ht.get(values[k]));
 		}
-		System.out.println("The hash table contains Bob:" + ht.Contains("Bob"));
+		System.out.println("The hash table contains cat:" + ht.Contains("cat"));
 		System.out.println("The number of entries in the hash table is: "+ht.NumEntries());
 
                 

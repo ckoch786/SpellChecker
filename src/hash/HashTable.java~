@@ -61,8 +61,8 @@ public class HashTable {
 		while (table[hash] != null && table[hash].getKey() != key)
 	           hash = (hash + 1) % TABLE_SIZE;
 		if ( table[hash] == null)         return false;
-	      //else if(table[hash].equals(S))    return true;
-		else                              return true;
+		else if(table[hash].equals(S))    return true;
+		else                              return false;
    }
 	/**
 	 * 
