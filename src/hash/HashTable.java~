@@ -11,7 +11,7 @@ package hash;
 public class HashTable {
    // size of dict = 2744	 dict * 2 = 5488
    private final static int TABLE_SIZE  = 23; //Rows in 2d array
-   private final static int BUCKET_SIZE = 10;   // columns in 2d array
+   private final static int BUCKET_SIZE = 2;   // columns in 2d array
    protected int numEntries;
    HashEntry[][] table;
     
@@ -43,8 +43,7 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);		 
       while (table[hash][bucket] != null           && 
-               table[hash][bucket].getKey() != key)&& 
-	        (table[hash][bucket].getValue() != S ) {
+	        table[hash][bucket].getValue() != S ) {
          bucket++; 
          System.out.println("\t\tThere has been a collision at " +hash + " " + bucket);	 
       }
@@ -71,7 +70,6 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);	
       while (table[hash][bucket] != null           && 
-               table[hash][bucket].getKey() != key && 
 	       table[hash][bucket].getValue() != S) {
          bucket++;           
       }	 
@@ -94,7 +92,6 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);		 
       while (table[hash][bucket] != null           && 
-               table[hash][bucket].getKey() != key && 
 	       table[hash][bucket].getValue() != S){
          bucket++;                 
       }

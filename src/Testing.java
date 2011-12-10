@@ -11,7 +11,7 @@ public class Testing {
 	   
 		HashTable ht = new HashTable();
 		
-		String[] values = {"are", "dog", "cow","cat", "lepard", "car", "house", "that", "Those", "my"};
+		String[] values = {"are", "dog", "cow","cat", "lepard", "car", "house", "that", "Those", "my","tac" };
 	
 		//Fill table with values array
 		for (int i = 0; i < values.length; i++){
