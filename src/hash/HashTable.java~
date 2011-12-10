@@ -43,15 +43,16 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);		 
       while (table[hash][bucket] != null           && 
-               table[hash][bucket].getKey() != key ){//&& 
-	      // table[hash][bucket].getValue() != S) {
+               table[hash][bucket].getKey() != key)&& 
+	        (table[hash][bucket].getValue() != S ) {
          bucket++; 
-         System.out.println("There has been a collision at " +hash + " " + bucket+ "\n");	 
+         System.out.println("\t\tThere has been a collision at " +hash + " " + bucket);	 
       }
       table[hash][bucket] = new HashEntry(key, S);
       System.out.println("The Value stored in hash table location "+hash+":"+ bucket+" is \"" + S+"\"" );
       System.out.println("The key: " + key + " for value: " + S);
-      System.out.println("Value "+S+ " is being place into the hash table at "+ hash);
+      System.out.println("Value "+"\""+S+"\""+ " is being place into the hash table at "+ hash);
+      System.out.println();
       numEntries++;
    }
 		

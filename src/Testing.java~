@@ -11,7 +11,7 @@ public class Testing {
 	   
 		HashTable ht = new HashTable();
 		
-		String[] values = {"are","cat", "dog", "cow", "lepard", "car", "house", "that", "Those", "my"};
+		String[] values = {"are", "dog", "cow","cat", "lepard", "car", "house", "that", "Those", "my"};
 	
 		//Fill table with values array
 		for (int i = 0; i < values.length; i++){
@@ -19,10 +19,10 @@ public class Testing {
 		}
 		System.out.println("The values in the hash table are:");
 		for (int k = 0; k < ht.NumEntries(); k++){
-			System.out.println("at " +"" +ht.get(values[k]));
+			System.out.println("at " + ""  +ht.get(values[k]));
 		}
 		System.out.println("The hash table contains Bob: " + ht.Contains("Bob"));
-		System.out.println("The hash table contains cat: " + ht.Contains("cat"));
+		System.out.println("The hash table contains cat: " + ht.Contains("ca"));
 		System.out.println("The hash table contains are: " + ht.Contains("are"));
 		System.out.println("The number of entries in the hash table is: "+ht.NumEntries());
                 

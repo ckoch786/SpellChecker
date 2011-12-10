@@ -43,8 +43,8 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);		 
       while (table[hash][bucket] != null           && 
-               table[hash][bucket].getKey() != key ){//&& 
-	      // table[hash][bucket].getValue() != S) {
+               table[hash][bucket].getKey() != key && 
+	        table[hash][bucket].getValue() != S ) {
          bucket++; 
          System.out.println("\t\tThere has been a collision at " +hash + " " + bucket);	 
       }
