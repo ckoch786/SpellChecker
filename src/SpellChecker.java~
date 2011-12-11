@@ -25,7 +25,7 @@ public class SpellChecker {
 	 * @param dictName
 	 * @param docName
 	 */
-	public static void checkSpelling(String dictName, 
+	public void checkSpelling(String dictName, 
 			                         String docName){
 		
 	}

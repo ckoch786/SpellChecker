@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import hash.HashTable;
-import hash.Hashable;
 
 /**
  * <p>
@@ -25,7 +24,7 @@ public class SpellChecker {
 	 * @param dictName
 	 * @param docName
 	 */
-	public static void checkSpelling(String dictName, 
+	public void checkSpelling(String dictName, 
 			                         String docName){
 		
 	}

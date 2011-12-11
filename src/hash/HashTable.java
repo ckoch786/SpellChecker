@@ -14,7 +14,7 @@ public class HashTable {
    private final static int BUCKET_SIZE = 10;   // columns in 2d array
    protected int numEntries;
    HashEntry[][] table;
-    
+		    
    /**
    * 
    * Constructor for a hash table of two dimensions of size
