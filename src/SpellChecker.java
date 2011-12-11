@@ -60,9 +60,11 @@ public class SpellChecker {
 	public static String[] getWords(String str){
 		StringTokenizer st = new StringTokenizer(str);
 		String[] words;
+		
+		words = new String[2999];
 		int i;
 		
-		words = null;
+		//words = null;
 		i=0;
 		while(st.hasMoreTokens()){
 			words[i]=st.nextToken();

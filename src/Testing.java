@@ -1,3 +1,6 @@
+
+import java.io.FileNotFoundException;
+
 import hash.HashTable;
 
 
@@ -7,22 +10,37 @@ import hash.HashTable;
  *
  */
 public class Testing {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 	   
 		HashTable ht = new HashTable();
 		
 		String[] values = {"are", "dog", "cow","cat", "lepard", "car", "house", "that", "Those", "my","tac" };
-	
+		String dictvalues;
+		String dick[];
+		int x;
+		
+//		dick = new String[2744];
+		dictvalues=SpellChecker.readFile("Dictionary.txt");
+
+		dick=SpellChecker.getWords(dictvalues);
+		
+		x=dick.length;
+		System.out.println(x);
 		//Fill table with values array
-		for (int i = 0; i < values.length; i++){
-			ht.Insert(values[i]);
+		for (int i = 0; i <2749; i++){//values.length; i++){		//22222	dick.length-1
+			ht.Insert(dick[i]);											//22222
 		}
 		System.out.println("The values in the hash table are:");
 		for (int k = 0; k < ht.NumEntries(); k++){
-			System.out.println("at " + ""  +ht.get(values[k]));
+			System.out.println("at " + ""  +ht.get(dick[k]));			//22222
 		}
-		System.out.println("The hash table contains Bob: " + ht.Contains("Bob"));
-		System.out.println("The hash table contains cat: " + ht.Contains("cat"));
+		for(int z=0; z<2749; z++){
+			ht.Contains(dick[z]);
+			System.out.println("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]));
+		}
+		String b = "beautiful";
+		System.out.println("The hash table contains beautiful: " + ht.Contains(b));
+		System.out.println("The hash table contains sat: " + ht.Contains("sat"));
 		System.out.println("The hash table contains are: " + ht.Contains("are"));
 		System.out.println("The number of entries in the hash table is: "+ht.NumEntries());
                 
