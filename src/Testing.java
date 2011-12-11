@@ -15,17 +15,25 @@ public class Testing {
 		HashTable ht = new HashTable();
 		
 		String[] values = {"are", "dog", "cow","cat", "lepard", "car", "house", "that", "Those", "my","tac" };
-		String dictvalues;
+		String dictvalues, docvalues;
 		String dick[];
-		int x;
+		String doc[];
+		int x, doclength;
 		
 //		dick = new String[2744];
 		dictvalues=SpellChecker.readFile("Dictionary.txt");
-
+		
 		dick=SpellChecker.getWords(dictvalues);
 		
 		x=dick.length;
+		
+		docvalues=SpellChecker.readFile("MyDocument.txt");
+		doc=SpellChecker.getWords(docvalues);
+		doclength=doc.length;
+		
 		System.out.println(x);
+		System.out.println(doclength);
+
 		//Fill table with values array
 		for (int i = 0; i <2749; i++){//values.length; i++){		//22222	dick.length-1
 			ht.Insert(dick[i]);											//22222
@@ -35,8 +43,8 @@ public class Testing {
 			System.out.println("at " + ""  +ht.get(dick[k]));			//22222
 		}
 		for(int z=0; z<2749; z++){
-			ht.Contains(dick[z]);
-			System.out.println("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]));
+			ht.Contains(doc[z]);
+			System.out.println("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]));
 		}
 		String b = "beautiful";
 		System.out.println("The hash table contains beautiful: " + ht.Contains(b));
