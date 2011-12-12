@@ -20,20 +20,14 @@ public class Testing {
 		String doc[];
 		int x, doclength;
 		
-//		dick = new String[2744];
 		dictvalues=SpellChecker.readFile("Dictionary.txt");
-		
 		dick=SpellChecker.getWords(dictvalues);
-		
-		x=dick.length;
+		x=SpellChecker.table_size;
 		
 		docvalues=SpellChecker.readFile("MyDocument.txt");
 		doc=SpellChecker.getWords(docvalues);
-		doclength=doc.length;
+		doclength=SpellChecker.table_size;
 		
-		System.out.println(x);
-		System.out.println(doclength);
-
 		//Fill table with values array
 		for (int i = 0; i <2749; i++){//values.length; i++){		//22222	dick.length-1
 			ht.Insert(dick[i]);											//22222
@@ -42,7 +36,16 @@ public class Testing {
 		for (int k = 0; k < ht.NumEntries(); k++){
 			System.out.println("at " + ""  +ht.get(dick[k]));			//22222
 		}
-		for(int z=0; z<2749; z++){
+		for(int z=0; z<x; z++){
+			ht.Contains(dick[z]);
+			System.out.println("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]));
+		}
+		System.out.println(" ");
+		System.out.println(x);
+		System.out.println(doclength);
+
+
+		for(int z=0; z<doclength; z++){
 			ht.Contains(doc[z]);
 			System.out.println("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]));
 		}
