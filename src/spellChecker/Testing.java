@@ -1,8 +1,9 @@
 package spellChecker;
 
-import java.io.FileNotFoundException;
-import hash.HashTable;
 
+import java.io.FileNotFoundException;
+
+import hash.HashTable;
 
 
 /**
@@ -19,38 +20,45 @@ public class Testing {
 		String dictvalues, docvalues;
 		String dick[];
 		String doc[];
-		int x, doclength;
+		int dicklength, doclength;
 		
-//		dick = new String[2744];
 		dictvalues=SpellChecker.readFile("Dictionary.txt");
-		
 		dick=SpellChecker.getWords(dictvalues);
+		dicklength=SpellChecker.table_size;
 		
-		x=dick.length;
-		
-		docvalues=SpellChecker.readFile("MyDocument.txt");
+		docvalues=SpellChecker.readFile("Dictionary.txt");
 		doc=SpellChecker.getWords(docvalues);
-		doclength=doc.length;
+		doclength=SpellChecker.table_size;
 		
-		System.out.println(x);
-		System.out.println(doclength);
-
 		//Fill table with values array
-		for (int i = 0; i <2749; i++){//values.length; i++){		//22222	dick.length-1
-			ht.Insert(dick[i]);											//22222
+		for (int i = 0; i <dicklength; i++){//values.length; i++){
+			ht.Insert(dick[i]);
 		}
 		System.out.println("The values in the hash table are:");
-		for (int k = 0; k < ht.NumEntries(); k++){
-			System.out.println("at " + ""  +ht.get(dick[k]));			//22222
+//		for (int k = 0; k < ht.NumEntries(); k++){
+//			System.out.println("at " + ""  +ht.get(dick[k]));
+//		}
+		System.out.println("Dictionary compare check");
+		for(int z=0; z<dicklength; z++){
+			System.out.println("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]));
 		}
-		for(int z=0; z<2749; z++){
-			ht.Contains(doc[z]);
+		System.out.println(" ");
+		System.out.println(dicklength);
+		System.out.println(doclength);
+		
+		System.out.println("The values in the document are: ");
+		for(int q=0; q<doclength; q++){
+			System.out.println(doc[q]);
+		}
+		System.out.println("Document compare check");
+		for(int z=0; z<doclength; z++){
 			System.out.println("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]));
 		}
-		String b = "beautiful";
-		System.out.println("The hash table contains beautiful: " + ht.Contains(b));
-		System.out.println("The hash table contains sat: " + ht.Contains("sat"));
-		System.out.println("The hash table contains are: " + ht.Contains("are"));
+//		
+//		System.out.println("Dictionary compare check");
+//		for(int w=0; w<doclength; w++){
+//			System.out.println("Hash Table contains "+doc[w] +" "+ht.Contains(doc[w]));
+//		}
 		System.out.println("The number of entries in the hash table is: "+ht.NumEntries());
                 
 		//Two dimension array testing operations.

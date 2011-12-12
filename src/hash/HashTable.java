@@ -11,7 +11,7 @@ package hash;
 public class HashTable {
    // size of dict = 2744	 dict * 2 = 5488
    private final static int TABLE_SIZE  = 5488;		//23; 	//Rows in 2d array
-   private final static int BUCKET_SIZE = 7;   // columns in 2d array
+   private final static int BUCKET_SIZE = 9;   // columns in 2d array
    protected int numEntries;
    HashEntry[][] table;
 		    
@@ -91,12 +91,16 @@ public class HashTable {
      	  else power = 0;
           key += Math.pow(32, power)*(int)S.charAt(i);
       }
-      int hash = (key % TABLE_SIZE);	
-      while (table[hash][bucket] != null           && 
-	       table[hash][bucket].getValue() != S) {
-         bucket++;           
+      int hash = (key % TABLE_SIZE);
+      System.out.println(key+"+++++++++++++++++++"+hash);
+      while ((table[hash][bucket] != null)           	&& 
+    		 (table[hash][bucket].getValue() != S)		&&
+    		 (bucket<7)) {
+    	  bucket++; 
+    	  System.out.println(bucket+"==========================================");
       }	 
-      if ( table[hash][bucket] == null) return false;
+	  System.out.println(bucket+"*********************************************");
+      if ( table[hash][bucket] == null||bucket>=8) return false;
       else                              return true;
    }
    /**
