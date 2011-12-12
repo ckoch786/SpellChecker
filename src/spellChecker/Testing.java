@@ -1,8 +1,9 @@
 package spellChecker;
 
-import java.io.FileNotFoundException;
-import hash.HashTable;
 
+import java.io.FileNotFoundException;
+
+import hash.HashTable;
 
 
 /**
@@ -19,40 +20,41 @@ public class Testing {
 		String dictvalues, docvalues;
 		String dick[];
 		String doc[];
-		int x, doclength;
+		int dictLength, doclength;
 		
-//		dick = new String[2744];
-		dictvalues=SpellChecker.readFile("Dictionary.txt");
+		//Read in Dictionary into array
+		dictvalues = SpellChecker.readFile("Dictionary.txt");
+		dick       = SpellChecker.getWords(dictvalues);
+		dictLength = SpellChecker.table_size;
 		
-		dick=SpellChecker.getWords(dictvalues);
+		//Read in Document into array
+		docvalues = SpellChecker.readFile("MyDocument.txt");
+		doc       = SpellChecker.getWords(docvalues);
+		doclength = SpellChecker.table_size;
 		
-		x=dick.length;
-		
-		docvalues=SpellChecker.readFile("MyDocument.txt");
-		doc=SpellChecker.getWords(docvalues);
-		doclength=doc.length;
-		
-		System.out.println(x);
-		System.out.println(doclength);
-
-		//Fill table with values array
-		for (int i = 0; i <2749; i++){//values.length; i++){		//22222	dick.length-1
-			ht.Insert(dick[i]);											//22222
+		//Fill hash table with contents of dict array
+		for (int i = 0; i < 2749; i++){//values.length; i++){		
+			ht.Insert(dick[i]);											
 		}
+		//Print out values in the hash table for dict array as a test
 		System.out.println("The values in the hash table are:");
 		for (int k = 0; k < ht.NumEntries(); k++){
-			System.out.println("at " + ""  +ht.get(dick[k]));			//22222
+			System.out.println("at " + ""  +ht.get(dick[k]));			
 		}
-		for(int z=0; z<2749; z++){
-			ht.Contains(doc[z]);
+		//Test that the hashtable's Contains function is working
+		for(int z=0; z < dictLength; z++){
+			System.out.println("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]));
+		}
+		//Test that the lengths of dict and doc are correct
+		System.out.println(" ");
+		System.out.println(dictLength);
+		System.out.println(doclength);
+
+        //Check to see if the values stored in the doc array are in the hash table
+		for(int z = 0; z < doclength; z++){
 			System.out.println("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]));
+		
 		}
-		String b = "beautiful";
-		System.out.println("The hash table contains beautiful: " + ht.Contains(b));
-		System.out.println("The hash table contains sat: " + ht.Contains("sat"));
-		System.out.println("The hash table contains are: " + ht.Contains("are"));
-		System.out.println("The number of entries in the hash table is: "+ht.NumEntries());
-                
 		//Two dimension array testing operations.
 		System.out.println();
                 System.out.println();
