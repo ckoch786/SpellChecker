@@ -12,8 +12,4 @@ For example if you use JavaDoc style comments instead of ordinary
 			  k=number of elements attempting to hash
 			  
 	Tried to use probability to determine the number of buckets to use in code but received errors 
-	due to the numbers getting too large to compute for anything over a couple hundred entries. 
-
-3.) About
-
-4.) 
+	due to the numbers getting too large to compute for anything over a couple hundred entries.  
