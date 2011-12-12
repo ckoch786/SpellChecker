@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -16,7 +17,7 @@ import hash.HashTable;
  *
  */
 public class SpellChecker {
-	
+	public static int table_size;
 	//ht shorter is simpler since we will be using it several times through out the program
 	HashTable ht = new HashTable();
 	/**
@@ -60,15 +61,16 @@ public class SpellChecker {
 	public static String[] getWords(String str){
 		StringTokenizer st = new StringTokenizer(str);
 		String[] words;
-		
-		words = new String[2999];
 		int i;
 		
-		//words = null;
+		table_size=0;
+		words = new String[3000];
 		i=0;
+		//words = null;
 		while(st.hasMoreTokens()){
 			words[i]=st.nextToken();
 			i++;
+			table_size++;
 		}
 		return words;
 	}
