@@ -28,17 +28,20 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
-
+/**
+ * 
+ * @author Cory Koch
+ * @author Carl Bohman
+ *
+ */
 public class SpellCheckerGUI {
 
 	private  JFrame     frame;
 	private  JTextArea  textAreaMissSpelled;
 	private   JTextArea textAreaSuggested;
 	private   JTextArea textAreaAbout;
-	private   JDialog   popupAbout;
+	//private   JDialog   popupAbout;
 	private   JPanel    panel_3;
-	private   ImageIcon icon = new ImageIcon("tux_icon.gif",
-            "Just Tux");
     SpellChecker sp;
     HashTable    ht;
     
@@ -64,7 +67,15 @@ public class SpellCheckerGUI {
 	public SpellCheckerGUI() {
 		initialize();
 	}
-	
+	/**
+	 * <p>
+	 * MenuAboutListener defines the action for the mntmAbout
+	 * in the menu, it displays a short message about the application
+	 * and names the creators.
+	 * </p>
+	 *
+	 */
+	/*
 	class MenuAboutListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			popupAbout = new JDialog();
@@ -78,20 +89,19 @@ public class SpellCheckerGUI {
 			textAreaAbout.setRows(3);
 			textAreaAbout.setColumns(15);
 			panel_3.add(textAreaAbout);
-			//panel_3.s
-			
-			
 			
 			String about = "Just a simple spell checker." +
-					"\n Created by: Carl Bohman and Cory Koch"+
-					"\n"+ icon;
+					"\n Created by: Carl Bohman and Cory Koch";
 			
 			textAreaAbout.append(about);
-			
-			
-			
 		}
-	}
+	}*/
+	/**
+	 * <p>
+	 * CheckSpellingListener defines the action for the btnCheckSpelling.
+	 * Which in this case is an implementation of the HashTable class
+	 *</p>
+	 */
 	class CheckSpellingListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 		   String dictvalues, docvalues;
@@ -121,28 +131,19 @@ public class SpellCheckerGUI {
 		   }catch (FileNotFoundException e1) {
 			   textAreaMissSpelled.append("File not found");
 		   }
-		   doc       = SpellChecker.getWords(docvalues);
+		   doc = SpellChecker.getWords(docvalues);
 		  
-	       
-		   ht = new HashTable();//SpellChecker.table_size
-		   //Fill table with values array
+		   ht = new HashTable();
+		   //Insert the Dictionary into the hash table
 		   for (int i = 0; i < dictLength; i++){		
 			   ht.Insert(dict[i]);											
 		   }
-		  /* //Get values for testing purposes TODO remove
-		   System.out.println("The values in the hash table are:");
-		   for (int k = 0; k < ht.NumEntries(); k++){
-			   textArea.append("at " + ""  +ht.get(dick[k])+ "\n");			
-			}*/
-		   //Verify that Contains function is working TODO remove
+           //Check the spelling of the doc against the dictionary		 
 		   for(int z = 0; z < docLength; z++){
 			    if(!ht.Contains(doc[z])) textAreaMissSpelled.append(doc[z] + "\n");
-			   //textArea.append("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]) + "\n");
 		   }
-	       
 		}
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -158,8 +159,6 @@ public class SpellCheckerGUI {
 		JPanel       panel            = new JPanel();
 		JProgressBar progressBar      = new JProgressBar();
 		JButton      btnCheckSpelling = new JButton("Check Spelling");
-		textAreaSuggested             = new JTextArea(); 
-		textAreaMissSpelled           = new JTextArea();
 		JPanel       panel_1          = new JPanel();
 		JPanel       panel_2          = new JPanel();
 		JScrollPane  scrollPane       = new JScrollPane();
@@ -183,29 +182,28 @@ public class SpellCheckerGUI {
 		
 	    //Miss Spelled Panel	
 		panel_1.add(scrollPane);
-		lblMissSpelled = new JLabel("Miss Spelled");
-		panel_1.add(lblMissSpelled);
+		textAreaMissSpelled           = new JTextArea();
 		textAreaMissSpelled.setForeground(Color.red);
 		textAreaMissSpelled.setRows(15);
 		textAreaMissSpelled.setTabSize(4);
 		textAreaMissSpelled.setColumns(15);
 		panel_1.add(textAreaMissSpelled);
+		lblMissSpelled = new JLabel("Miss Spelled");
+		panel_1.add(lblMissSpelled);
 	    
 		// Suggestions Panel
 		panel_2.add(scrollPane_1);
-		lblSuggested = new JLabel("Suggestions");
-		panel_2.add(lblSuggested);
+		textAreaSuggested             = new JTextArea(); 
 		textAreaSuggested.setRows(15);
 		textAreaSuggested.setColumns(15);
 		panel_2.add(textAreaSuggested);
+		lblSuggested = new JLabel("Suggestions");
+		panel_2.add(lblSuggested);
 		
 		//Register Listeners
 		CheckSpellingListener l1 = new CheckSpellingListener();
-		MenuAboutListener     l2 = new MenuAboutListener(); 
+		//MenuAboutListener     l2 = new MenuAboutListener(); 
 		btnCheckSpelling.addActionListener(l1);
-		mntmAbout.addActionListener(l2);
-		
+		//mntmAbout.addActionListener(l2);	
 	}
-	
-
 }

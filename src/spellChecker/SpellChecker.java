@@ -18,9 +18,9 @@ import hash.HashTable;
  *
  */
 public class SpellChecker {
-	public static int table_size;
-	private final static int dictSize = 3000; //TODO add comment
-	//ht shorter is simpler since we will be using it several times through out the program
+	public static int        table_size;
+	private final static int dictSize = 3000; 
+	
 	HashTable ht = new HashTable();
 	/**
 	 * 
@@ -31,25 +31,14 @@ public class SpellChecker {
 			                         String docName){
 		
 	}
-	
 	/**
-	 * <p>
-	 * Let N be the number of words in the dictionary.  
-	 * Choose an array size that will have a load factor 
-	 * just over 1/2.  That is, make the size of the array larger 
-	 * than 2*N.  Choose a modulus that is prime, i.e. choose an 
-	 * actual array size that is a prime number just over 2*N, and 
-	 * have your program automatically choose this prime number.
-	 * </p>
+	 * Reads a document into an array of single words 
+	 * @param docName
+	 * @return
+	 * @throws FileNotFoundException
 	 */
-	
-	
-	//TODO
-	//For reading a document into an array of single words, consider:
 	public static String[] getWordsFromFile(String docName) throws FileNotFoundException{
 		return getWords( readFile(docName) );
-		//TODO set size where size is of the array of 
-		//words
 	}
 	/**
  	* <p>
@@ -67,7 +56,7 @@ public class SpellChecker {
 		
 		table_size = 0;
 		words      = new String[dictSize];
-		i=0;
+		i = 0;
 		//words = null;
 		while(st.hasMoreTokens()){
 			words[i]=st.nextToken();
@@ -76,9 +65,14 @@ public class SpellChecker {
 		}
 		return words;
 	}
-	
+	/**
+	 * Reads the text file docName into a single string of words
+	 * @param docName
+	 * @return Returns the result
+	 * @throws FileNotFoundException
+	 */
 	public static String readFile(String docName) throws FileNotFoundException {
-	   // Reads the text file docName into a single string of words
+	   
 	   File F = new File(docName);	
 	   Scanner docFile = new Scanner(F);	
 	   String result, line;
@@ -89,20 +83,5 @@ public class SpellChecker {
 	      result += line + "\n";
 	   } 
 	   return result;
-	}
-	
-	//TODO
-	//reads a dictionary into a hash table:
-	public  void dictread() throws FileNotFoundException{
-		File F = new File("Dictionary.txt");	
-		Scanner dictFile = new Scanner(F);
-		String line;
-		
-		while (dictFile.hasNextLine()) {
-		   line = dictFile.nextLine();
-		   
-		  ht.Insert(line);
-		   // insert the words in line into the hash table 
-		}
 	}
 }

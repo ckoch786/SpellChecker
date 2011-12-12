@@ -3,6 +3,23 @@ package hash;
 /**
  * <p>
  * Implement a hash table to store strings (i.e. objects of the Java String class).
+ * This implementation uses closed hashing to group hash table slots into buckets. 
+ * The hash table is viewed as an array of M slots divided into B buckets, with 
+ * each bucket consisting of M/B slots. The hash function then assigns each record 
+ * to the first slot within one of the buckets. If this slot is already occupied, 
+ * then the record is moved downwards within the bucket until an open slot is found. 
+ * </p>
+ * <p>
+ * When searching for a record, the first step is to hash the key to determine
+ * which bucket should contain the record. The records in this bucket are then 
+ * searched.  If the desired key value is not found and the bucket still has 
+ * free slots, then the search is complete.
+ * 
+ * Note: Since the bucket method is best suited when the values for the hash table
+ * are known the default constructor has values that we have found are 
+ * optimal for this implementation, through the testing we have undertaken for this
+ * data set.
+ * 
  * </p>
  * @author Cory Koch
  * @author Carl Bohman
@@ -10,7 +27,7 @@ package hash;
  */
 public class HashTable {
    // size of dict = 2744	 dict * 2 = 5488
-   private final static int TABLE_SIZE  = 5488;		//23; 	//Rows in 2d array
+   private final static int TABLE_SIZE  = 5488;	//Rows in 2d array
    private final static int BUCKET_SIZE = 9;   // columns in 2d array
    protected int numEntries;
    HashEntry[][] table;
@@ -58,23 +75,16 @@ public class HashTable {
     	 if(power < 3)power++;
     	 else power = 0;
          key += Math.pow(32, power)*(int)S.charAt(i);
-         System.out.println("The key for "+S + " is " +key);
       }
       int hash = (key % TABLE_SIZE);		 
       while (table[hash][bucket] != null           && 
 	        table[hash][bucket].getValue() != S ) {
          bucket++; 
-         System.out.println("\t\tThere has been a collision at " +hash + " " + bucket);	 
       }
       table[hash][bucket] = new HashEntry(key, S);
-      System.out.println("The Value stored in hash table location "+hash+":"+ bucket+" is \"" + S+"\"" );
-      System.out.println("The key: " + key + " for value: " + S);
-      System.out.println("Value "+"\""+S+"\""+ " is being place into the hash table at "+ hash);
-      System.out.println();
       numEntries++;
    }
 		
-
    /**
    * 
    * @param S
@@ -93,7 +103,7 @@ public class HashTable {
       }
       int hash = (key % TABLE_SIZE);	
       while (table[hash][bucket] != null             && 
-	      ! table[hash][bucket].getValue().equals(S)       &&
+	      ! table[hash][bucket].getValue().equals(S) &&
 	       bucket != 7) {
          bucket++;
       }	 
@@ -106,7 +116,11 @@ public class HashTable {
    */
    public int NumEntries() { return numEntries; } 
    
-   //TODO remove
+   /**
+    * 
+    * @param S
+    * @return Returns the value if found else returns false
+    */
    public String get(String S) {
       int i, key, bucket;
       int power;
