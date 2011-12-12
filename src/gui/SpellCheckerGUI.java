@@ -80,16 +80,11 @@ public class SpellCheckerGUI {
 			panel_3.add(textAreaAbout);
 			//panel_3.s
 			
-			
-			
 			String about = "Just a simple spell checker." +
 					"\n Created by: Carl Bohman and Cory Koch"+
 					"\n"+ icon;
 			
 			textAreaAbout.append(about);
-			
-			
-			
 		}
 	}
 	class CheckSpellingListener implements ActionListener {
@@ -139,6 +134,17 @@ public class SpellCheckerGUI {
 			    if(!ht.Contains(doc[z])) textAreaMissSpelled.append(doc[z] + "\n");
 			   //textArea.append("Hash Table contains "+doc[z] +" "+ht.Contains(doc[z]) + "\n");
 		   }
+		   textAreaSuggested.append("Reasons for misspelled words include: "+
+				   					"\nTransposing two letters"+
+				   					"\n     i.e. \"dictoinary\""+
+				   					"\nForgetting double letters"+
+				   					"\n     i.e. \"sugest\""+
+				   					"\nForgetting silent letters"+
+				   					"\n     i.e. \"nife\""+
+				   					"\nAnd using f instead of gh"+
+				   					"\n     i.e. \"lauf\""+
+				   					"\n\n\nTry using these helpful tips "+
+				   					"to fix your \ndocument!");
 	       
 		}
 	}
@@ -149,7 +155,7 @@ public class SpellCheckerGUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Spell Checker App.");
-		frame.setBounds(100, 100, 501, 368);
+		frame.setBounds(100, 100, 600, 368);		//501		368
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar     menuBar          = new JMenuBar();
@@ -206,6 +212,4 @@ public class SpellCheckerGUI {
 		mntmAbout.addActionListener(l2);
 		
 	}
-	
-
 }
