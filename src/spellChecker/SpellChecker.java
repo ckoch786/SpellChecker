@@ -19,6 +19,7 @@ import hash.HashTable;
  */
 public class SpellChecker {
 	public static int table_size;
+	private final static int dictSize = 3000; //TODO add comment
 	//ht shorter is simpler since we will be using it several times through out the program
 	HashTable ht = new HashTable();
 	/**
@@ -64,8 +65,8 @@ public class SpellChecker {
 		String[] words;
 		int i;
 		
-		table_size=0;
-		words = new String[3000];
+		table_size = 0;
+		words      = new String[dictSize];
 		i=0;
 		//words = null;
 		while(st.hasMoreTokens()){
@@ -89,19 +90,4 @@ public class SpellChecker {
 	   } 
 	   return result;
 	}
-	
-	//TODO
-	//reads a dictionary into a hash table:
-//	public  void dictread() throws FileNotFoundException{
-//		File F = new File("Dictionary.txt");	
-//		Scanner dictFile = new Scanner(F);
-//		String line;
-//		
-//		while (dictFile.hasNextLine()) {
-//		   line = dictFile.nextLine();
-//		   
-//		  ht.Insert(line);
-//		   // insert the words in line into the hash table 
-//		}
-//	}
 }

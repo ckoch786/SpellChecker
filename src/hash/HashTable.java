@@ -91,16 +91,13 @@ public class HashTable {
      	  else power = 0;
           key += Math.pow(32, power)*(int)S.charAt(i);
       }
-      int hash = (key % TABLE_SIZE);
-      System.out.println(key+"+++++++++++++++++++"+hash);
-      while ((table[hash][bucket] != null)           	&& 
-    		 (table[hash][bucket].getValue() != S)		&&
-    		 (bucket<7)) {
-    	  bucket++; 
-    	  System.out.println(bucket+"==========================================");
+      int hash = (key % TABLE_SIZE);	
+      while (table[hash][bucket] != null             && 
+	      ! table[hash][bucket].getValue().equals(S)       &&
+	       bucket != 7) {
+         bucket++;
       }	 
-	  System.out.println(bucket+"*********************************************");
-      if ( table[hash][bucket] == null||bucket>=8) return false;
+      if ( table[hash][bucket] == null ) return false;
       else                              return true;
    }
    /**

@@ -1,5 +1,8 @@
 
+
 import java.io.FileNotFoundException;
+
+import spellChecker.SpellChecker;
 
 import hash.HashTable;
 
