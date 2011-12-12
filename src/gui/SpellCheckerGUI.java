@@ -9,15 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
-import java.awt.ScrollPane;
-
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
-import javax.swing.JScrollBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JProgressBar;
@@ -40,7 +35,7 @@ public class SpellCheckerGUI {
 	private  JTextArea  textAreaMissSpelled;
 	private   JTextArea textAreaSuggested;
 	private   JTextArea textAreaAbout;
-	//private   JDialog   popupAbout;
+	private   JDialog   popupAbout;
 	private   JPanel    panel_3;
     SpellChecker sp;
     HashTable    ht;
@@ -75,7 +70,6 @@ public class SpellCheckerGUI {
 	 * </p>
 	 *
 	 */
-	/*
 	class MenuAboutListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			popupAbout = new JDialog();
@@ -95,7 +89,7 @@ public class SpellCheckerGUI {
 			
 			textAreaAbout.append(about);
 		}
-	}*/
+	}
 	/**
 	 * <p>
 	 * CheckSpellingListener defines the action for the btnCheckSpelling.
@@ -179,31 +173,32 @@ public class SpellCheckerGUI {
 		panel.add(btnCheckSpelling);
 		panel.add(rigidArea);
 		panel.add(progressBar);
+		panel_1.add(scrollPane);
+		
+		lblMissSpelled = new JLabel("Miss Spelled");
+		panel_1.add(lblMissSpelled);
 		
 	    //Miss Spelled Panel	
-		panel_1.add(scrollPane);
 		textAreaMissSpelled           = new JTextArea();
+		panel_1.add(textAreaMissSpelled);
 		textAreaMissSpelled.setForeground(Color.red);
 		textAreaMissSpelled.setRows(15);
 		textAreaMissSpelled.setTabSize(4);
 		textAreaMissSpelled.setColumns(15);
-		panel_1.add(textAreaMissSpelled);
-		lblMissSpelled = new JLabel("Miss Spelled");
-		panel_1.add(lblMissSpelled);
-	    
-		// Suggestions Panel
-		panel_2.add(scrollPane_1);
-		textAreaSuggested             = new JTextArea(); 
-		textAreaSuggested.setRows(15);
-		textAreaSuggested.setColumns(15);
-		panel_2.add(textAreaSuggested);
 		lblSuggested = new JLabel("Suggestions");
 		panel_2.add(lblSuggested);
+		panel_2.add(scrollPane_1);
+		
+		// Suggestions Panel
+		textAreaSuggested             = new JTextArea(); 
+		panel_2.add(textAreaSuggested);
+		textAreaSuggested.setRows(15);
+		textAreaSuggested.setColumns(15);
 		
 		//Register Listeners
 		CheckSpellingListener l1 = new CheckSpellingListener();
-		//MenuAboutListener     l2 = new MenuAboutListener(); 
+		MenuAboutListener     l2 = new MenuAboutListener(); 
 		btnCheckSpelling.addActionListener(l1);
-		//mntmAbout.addActionListener(l2);	
+		mntmAbout.addActionListener(l2);	
 	}
 }
