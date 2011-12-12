@@ -1,4 +1,6 @@
 package gui;
+import spellChecker.SpellChecker;
+import hash.HashTable;
 
 import java.awt.EventQueue;
 
@@ -21,12 +23,15 @@ import javax.swing.Box;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
 
 public class SpellCheckerGUI {
 
 	private  JFrame     frame;
 	private  JTextArea  textArea;
-
+    SpellChecker sp;
+    HashTable    ht;
+    
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +56,44 @@ public class SpellCheckerGUI {
 	}
 	class CheckSpellingListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-	       textArea.append("Hello World!"); 
+			String dictvalues = null, docvalues;
+			String dick[];
+			String doc[];
+			int x, doclength;
+			sp = new SpellChecker();
+			
+		   dick = new String[2744];
+		   try {
+			dictvalues = SpellChecker.readFile("Dictionary.txt");
+		   }catch (FileNotFoundException e1) {
+			   textArea.append("File not found");  
+			 }
+		   dick = SpellChecker.getWords(dictvalues);			
+		  /*
+		   try {
+			docvalues = SpellChecker.readFile("MyDocument.txt");
+		   }catch (FileNotFoundException e1) {
+			   textArea.append("File not found");
+		   }
+		   doc       = SpellChecker.getWords(docvalues);
+		   doclength = doc.length;
+	       */
+		   ht = new HashTable(SpellChecker.table_size);
+		   //Fill table with values array
+		   for (int i = 0; i < 2749; i++){//values.length; i++){		//22222	dick.length-1
+			   ht.Insert(dick[i]);											//22222
+		   }
+		   //Get values for testing purposes TODO remove
+		   System.out.println("The values in the hash table are:");
+		   for (int k = 0; k < ht.NumEntries(); k++){
+			   textArea.append("at " + ""  +ht.get(dick[k])+ "\n");			//22222
+			}
+		   //Verify that Contains function is working TODO remove
+		   for(int z = 0; z < 2749; z++){
+			   ht.Contains(dick[z]);
+			   textArea.append("Hash Table contains "+dick[z] +" "+ht.Contains(dick[z]) + "\n");
+		   }
+	       
 		}
 	}
 

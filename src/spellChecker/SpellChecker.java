@@ -1,7 +1,9 @@
+package spellChecker;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+
 
 import hash.HashTable;
 
@@ -17,8 +19,10 @@ import hash.HashTable;
  */
 public class SpellChecker {
 	
+	public static int table_size;
 	//ht shorter is simpler since we will be using it several times through out the program
 	HashTable ht = new HashTable();
+
 	/**
 	 * 
 	 * @param dictName
@@ -63,12 +67,13 @@ public class SpellChecker {
 		
 		words = new String[2999];
 		int i;
-		
+		table_size = 0;
 		//words = null;
 		i=0;
 		while(st.hasMoreTokens()){
 			words[i]=st.nextToken();
 			i++;
+			table_size++;
 		}
 		return words;
 	}
